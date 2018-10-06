@@ -376,6 +376,7 @@
     <select id="teamSelector" onchange="getInfo(this.value)">
         <option value=""></option>
     </select>
+
     <section id="teamInfo" name="teamInfo">
 
     </section>
@@ -401,17 +402,89 @@
 
     function getInfo(elementValue)
     {
+        let teamInfoBox = document.getElementById('teamInfo');
+        teamInfoBox.innerHTML = '';
+
+        if (!elementValue)
+            return;
+
         const theTeam = teams.filter(x =>
         {
             if (x.team_id === elementValue)
                 return x;
         });
 
-        var table = document.createElement('table');
+        let table = document.createElement('table');
+        table.setAttribute('border', '1');
 
-        
+        let headRow = document.createElement('tr');
+
+        let firstName = document.createElement('td');
+        firstName.innerHTML = '<b>First Name</b>';
+        headRow.appendChild(firstName);
+
+        let lastName = document.createElement('td');
+        lastName.innerHTML = '<b>Last Name</b>';
+        headRow.appendChild(lastName);
+
+        let conference = document.createElement('td');
+        conference.innerHTML = '<b>Conference</b>';
+        headRow.appendChild(conference);
+
+        let division = document.createElement('td');
+        division.innerHTML = '<b>Division</b>';
+        headRow.appendChild(division);
+
+        let field = document.createElement('td');
+        field.innerHTML = '<b>Field</b>';
+        headRow.appendChild(field);
+
+        let city = document.createElement('td');
+        city.innerHTML = '<b>City</b>';
+        headRow.appendChild(city);
+
+        let state = document.createElement('td');
+        state.innerHTML = '<b>State</b>';
+        headRow.appendChild(state);
+
+        table.appendChild(headRow);
+
+        //start team row
+
+        let teamRow = document.createElement('tr');
+
+        let teamFirstName = document.createElement('td');
+        teamFirstName.innerHTML = theTeam[0].first_name;
+        teamRow.appendChild(teamFirstName);
+
+        let teamLastName = document.createElement('td');
+        teamLastName.innerHTML = theTeam[0].last_name;
+        teamRow.appendChild(teamLastName);
+
+        let teamConference = document.createElement('td');
+        teamConference.innerHTML = theTeam[0].conference;
+        teamRow.appendChild(teamConference);
+
+        let teamDivision = document.createElement('td');
+        teamDivision.innerHTML = theTeam[0].division;
+        teamRow.appendChild(teamDivision);
+
+        let teamField = document.createElement('td');
+        teamField.innerHTML = theTeam[0].site_name;
+        teamRow.appendChild(teamField);
+
+        let teamCity = document.createElement('td');
+        teamCity.innerHTML = theTeam[0].city;
+        teamRow.appendChild(teamCity);
+
+        let teamState = document.createElement('td');
+        teamState.innerHTML = theTeam[0].state;
+        teamRow.appendChild(teamState);
+
+        table.appendChild(teamRow);
 
 
+        teamInfoBox.appendChild(table);
     }
 
 
