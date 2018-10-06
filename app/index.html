@@ -4,9 +4,18 @@
 
     <style>
 
+		#container {
+			padding: 10px;
+		}
+		
         td {
             padding: 5px;
+			border: 1px solid black;
         }
+		
+		tr.teamCell {
+			text-align: center;
+		}
 		
 		h1 {
 		color: blue;
@@ -381,6 +390,7 @@
     </script>
 </head>
 <body>
+<div id="container"> 
 <h1>Baseball Teams </h1>
     <label for="teamSelector">Select A Team:</label>
 	<br/>
@@ -393,13 +403,13 @@
     </section>
 	
 	
+</div>
 	<br/>
 	<br/>
 	<br/>
 	<br/>
 	<hr/>
 	<footer> Copyright Steven Hicks and David Rini 2018 </2018>
-
 </body>
 
 <script>
@@ -434,7 +444,6 @@
         });
 
         let table = document.createElement('table');
-        table.setAttribute('border', '1');
 
         let headRow = document.createElement('tr');
 
@@ -471,6 +480,7 @@
         //start team row
 
         let teamRow = document.createElement('tr');
+		teamRow.classList.add('teamCell');
 
         let teamFirstName = document.createElement('td');
         teamFirstName.innerHTML = theTeam[0].first_name;
